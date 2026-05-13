@@ -33,5 +33,14 @@ namespace SafeTrack.AuthService.Controllers
                 message = "Token valid"
             });
         }
+
+        [HttpPost("logout")]
+        public IActionResult Logout()
+        {
+            return Ok(new
+            {
+                message = "Logout successful"
+            });
+        }
     }
 }
