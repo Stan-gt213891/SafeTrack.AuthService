@@ -1,0 +1,6 @@
+@SafeTrack.AuthService_HostAddress = http://localhost:5298
+
+GET {{SafeTrack.AuthService_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
