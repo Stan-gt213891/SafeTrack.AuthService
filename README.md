@@ -1,21 +1,54 @@
-# SafeTrack.AuthService
+# SafeTrack Backend
 
-Microservice responsible for authentication and access management in the SafeTrack family monitoring platform.
+Implementación del backend de SafeTrack utilizando ASP.NET Core Web API, Entity Framework Core y MySQL Cloud Railway.
 
-## Features
+## Integrantes del equipo
 
-- User registration
-- User login
-- JWT validation
-- Swagger/OpenAPI documentation
+- Stanley Jeremy Gutierrez Tume
+- Juan José Meza Huanacune
+- Eduardo Fabián Chacaliaza Minaya
+- Fabricio Fabián Quispe Barzola
+- Romero Meza Jhimy Pool
 
-## Technologies
+## Tecnologías utilizadas
 
-- ASP.NET Core Web API
-- .NET 8
+- ASP.NET Core Web API (.NET 8)
 - Swagger/OpenAPI
+- Entity Framework Core
+- MySQL Cloud Railway
+- BCrypt.Net
 - GitHub
 
-## Sprint
+## Microservicios implementados
 
-Sprint 1 - Initial backend setup
+- Auth Service
+- Alert Service
+- Tracking Service
+
+## Funcionalidades implementadas
+
+- Registro de usuarios
+- Autenticación de usuarios
+- Validación de token
+- Gestión de alertas de emergencia
+- Endpoints de tracking
+- Persistencia de datos en la nube
+
+## Base de datos
+
+El proyecto utiliza MySQL Cloud Railway integrado mediante Entity Framework Core y migraciones automáticas.
+
+## Ejecución del proyecto
+
+1. Clonar el repositorio
+2. Abrir la solución en Visual Studio
+3. Restaurar paquetes NuGet
+4. Ejecutar el proyecto con Ctrl + F5
+
+## Swagger
+
+Swagger/OpenAPI se encuentra habilitado para documentación y pruebas de los endpoints REST.
+
+## Integración Cloud
+
+El backend se encuentra conectado a una base de datos MySQL Cloud en Railway, permitiendo persistencia compartida de datos para todo el equipo de desarrollo.
