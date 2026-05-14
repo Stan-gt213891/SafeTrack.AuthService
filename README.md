@@ -4,11 +4,11 @@ Implementación del backend de SafeTrack utilizando ASP.NET Core Web API, Entity 
 
 ## Integrantes del equipo
 
-- Stanley Jeremy Gutierrez Tume
-- Juan José Meza Huanacune
-- Eduardo Fabián Chacaliaza Minaya
-- Fabricio Fabián Quispe Barzola
-- Romero Meza Jhimy Pool
+- Gutierrez Tume Stanley Jeremy
+- Esteban Valentino Alvarez Falen
+- Franco Mauricio López Román
+- Carlo Patricio Ramirez Escalante
+- Jesús Fernando Paucar Zenteno
 
 ## Tecnologías utilizadas
 
