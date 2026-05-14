@@ -1,4 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SafeTrack.AuthService.Data;
+using SafeTrack.AuthService.DTOs;
+using SafeTrack.AuthService.Models;
 
 namespace SafeTrack.AuthService.Controllers
 {
@@ -6,12 +9,53 @@ namespace SafeTrack.AuthService.Controllers
     [Route("api/v1/auth")]
     public class AuthController : ControllerBase
     {
-        [HttpPost("register")]
-        public IActionResult Register()
+        private readonly AppDbContext _context;
+
+        public AuthController(AppDbContext context)
         {
+            _context = context;
+        }
+
+        [HttpPost("register")]
+        public IActionResult Register([FromBody] RegisterRequest request)
+        {
+            if (string.IsNullOrWhiteSpace(request.FullName) ||
+                string.IsNullOrWhiteSpace(request.Email) ||
+                string.IsNullOrWhiteSpace(request.Password))
+            {
+                return BadRequest(new
+                {
+                    message = "FullName, Email and Password are required"
+                });
+            }
+
+            var emailExists = _context.Users.Any(u => u.Email == request.Email);
+
+            if (emailExists)
+            {
+                return BadRequest(new
+                {
+                    message = "Email is already registered"
+                });
+            }
+
+            var user = new User
+            {
+                FullName = request.FullName,
+                Email = request.Email,
+                PasswordHash = BCrypt.Net.BCrypt.HashPassword(request.Password),
+                Role = "Tutor",
+                CreatedAt = DateTime.UtcNow
+            };
+
+            _context.Users.Add(user);
+            _context.SaveChanges();
+
             return Ok(new
             {
-                message = "User registered successfully"
+                message = "User registered successfully",
+                userId = user.Id,
+                email = user.Email
             });
         }
 
