@@ -60,12 +60,48 @@ namespace SafeTrack.AuthService.Controllers
         }
 
         [HttpPost("login")]
-        public IActionResult Login()
+        public IActionResult Login([FromBody] LoginRequest request)
         {
+            if (string.IsNullOrWhiteSpace(request.Email) ||
+                string.IsNullOrWhiteSpace(request.Password))
+            {
+                return BadRequest(new
+                {
+                    message = "Email and Password are required"
+                });
+            }
+
+            var user = _context.Users.FirstOrDefault(u => u.Email == request.Email);
+
+            if (user == null)
+            {
+                return Unauthorized(new
+                {
+                    message = "Invalid email or password"
+                });
+            }
+
+            var passwordValid = BCrypt.Net.BCrypt.Verify(
+                request.Password,
+                user.PasswordHash
+            );
+
+            if (!passwordValid)
+            {
+                return Unauthorized(new
+                {
+                    message = "Invalid email or password"
+                });
+            }
+
             return Ok(new
             {
                 message = "Login successful",
-                token = "jwt-token-generated"
+                token = "jwt-token-generated",
+                userId = user.Id,
+                fullName = user.FullName,
+                email = user.Email,
+                role = user.Role
             });
         }
 
