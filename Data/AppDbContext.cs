@@ -13,5 +13,7 @@ namespace SafeTrack.AuthService.Data
         public DbSet<User> Users => Set<User>();
         public DbSet<FamilyMember> FamilyMembers => Set<FamilyMember>();
         public DbSet<Geofence> Geofences => Set<Geofence>();
+        public DbSet<Alert> Alerts => Set<Alert>();
     }
+
 }
