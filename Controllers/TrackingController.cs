@@ -23,7 +23,7 @@ namespace SafeTrack.AuthService.Controllers
                 dependentId = dependentId,
                 latitude = "-12.0464",
                 longitude = "-77.0428",
-                status = "Location retrieved successfully"
+                status = "Ruta segura"
             });
         }
     }
