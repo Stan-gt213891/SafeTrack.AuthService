@@ -1,14 +1,10 @@
 ﻿namespace SafeTrack.AuthService.Models
 {
-    public class Geofence
+    public class Location
     {
         public int Id { get; set; }
 
-        public string Name { get; set; } = string.Empty;
-
-        public int Radius { get; set; }
-
-        public string Status { get; set; } = "Activa";
+        public int DependentId { get; set; } = 1;
 
         public string Latitude { get; set; } = string.Empty;
 

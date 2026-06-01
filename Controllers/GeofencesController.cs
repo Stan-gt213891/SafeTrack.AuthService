@@ -42,6 +42,8 @@ namespace SafeTrack.AuthService.Controllers
                 Name = request.Name,
                 Radius = request.Radius,
                 Status = request.Status,
+                Latitude = request.Latitude,
+                Longitude = request.Longitude,
                 CreatedAt = DateTime.UtcNow
             };
 
@@ -50,6 +52,7 @@ namespace SafeTrack.AuthService.Controllers
 
             return Ok(geofence);
         }
+
         [HttpDelete("{id}")]
         public IActionResult DeleteGeofence(int id)
         {
