@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using SafeTrack.AuthService.Dtos;
+using Microsoft.AspNetCore.Mvc;
 using SafeTrack.AuthService.Data;
 using SafeTrack.AuthService.Models;
 
@@ -41,7 +42,22 @@ namespace SafeTrack.AuthService.Controllers
 
             return Ok(alert);
         }
+        [HttpPost("geofence")]
+        public IActionResult GeofenceAlert([FromBody] CreateAlertRequest request)
+        {
+            var alert = new Alert
+            {
+                Type = request.Type,
+                Message = request.Message,
+                Status = "Activa",
+                CreatedAt = DateTime.UtcNow
+            };
 
+            _context.Alerts.Add(alert);
+            _context.SaveChanges();
+
+            return Ok(alert);
+        }
         [HttpDelete("{id}")]
         public IActionResult DeleteAlert(int id)
         {
